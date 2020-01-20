@@ -1,0 +1,8 @@
+@import "../../../styles.scss";
+h3{
+    display: none;
+    @media (max-width:750px) {
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,73 @@
+<div class="outer">
+  <div class="title-container">
+  <h3>Список дел:</h3>
+  <h3>Добавить новое дело</h3>
+  </div>
+  <div class="tasks-container">
+    <div class="filter-container">
+      <span class="short-info-description">*Фильтры</span>
+      <div>    
+        <mat-form-field class="text-field login">
+          <mat-label>Приоритет</mat-label>
+          <mat-select matNativeControl (selectionChange)="priorityFilter($event.value)"
+          >
+            <mat-option value="">Не выбранно</mat-option>
+            <mat-option value="hight">Hight</mat-option>
+            <mat-option value="middle">Middle</mat-option>
+            <mat-option value="low">Low</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>    
+        <mat-form-field class="text-field">
+          <mat-label>Выполнено</mat-label>
+          <mat-select matNativeControl (selectionChange)="doneFilter($event.value)"
+          >
+            <mat-option value="">Не выбранно</mat-option>
+            <mat-option value="true">Yes</mat-option>
+            <mat-option value="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="task-body" *ngFor="let task of viewedTasks; let i = index">
+      <div class="name">{{task.name}}
+        <span>*Задача</span>
+      </div>
+      <div class="task-managment">
+        <span>*Управление</span>
+        <div class="done"> <mat-checkbox [checked]="task.done" (click)="cangeState($event, i)"></mat-checkbox></div>
+        <div class="delete" (click)="deleteTask(i)">X</div>
+        <div class="toggle" (click)="showAll($event)">&#9660;</div>
+      </div>  
+        <div class="hidden-container">
+          <div class="short-info">
+            <div class="info">
+              {{task.date}}
+              <span class="short-info-description">*Дата создания</span>
+            </div>
+            <div class="info">
+              {{task.priority}}
+              <span class="short-info-description">*Приоритет</span>
+            </div>
+            <div class="info">
+              {{task.planedTime}}
+              <span class="short-info-description">*Планируемое время</span>
+            </div>
+            <div class="info">
+              {{task.factTime ? task.factTime : '...'}}
+              <span class="short-info-description">*Фактическое время</span>
+            </div>
+          </div>  
+          <div class="description">
+            {{task.description}}
+            <span class="short-description">*Описание задачи</span>
+          </div>
+        </div>  
+    </div>
+  </div>
+  <div class="add-task">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

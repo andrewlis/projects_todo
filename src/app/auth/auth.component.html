@@ -1,0 +1,52 @@
+<div class="outer">
+  <div class="form-container">
+    <form [formGroup]="form" enctype="multipart/form-data" (ngSubmit)="onSubmit()">
+
+      <mat-form-field class="text-field">
+        <input
+          matInput
+          placeholder="Введите ваш e-mail"
+          formControlName="email"
+        >
+      </mat-form-field>
+
+      <mat-form-field class="text-field">
+        <input
+          matInput
+          type="password"
+          placeholder="Пароль"
+          formControlName="password"
+        >
+      </mat-form-field>
+
+      <div class="errors">
+        <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched"
+            class="error">
+          <span *ngIf="form.controls['email'].errors.required">
+            Поле «Логин» обязательно для заполнения.
+          </span>
+        </div>
+        <div *ngIf="form.controls['email'].invalid && form.controls['email'].errors.email && !form.controls['email'].errors.required && form.controls['email'].touched" class="error">
+          В поле «Логин» нужно вводить адрес электронной почты.
+        </div>
+        <div *ngIf="form.controls['password'].invalid && form.controls['password'].touched" class="error">
+          <span *ngIf="form.controls['password'].errors.minlength">
+            Поле «Пароль» должно содержать не менее 6 символов.
+          </span>
+          <span *ngIf="form.controls['password'].errors.required">
+            Поле «Пароль» обязательно для заполнения.
+          </span>
+        </div>
+      </div>
+    <div class="buttons-container">
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        mat-raised-button
+      >
+        <span >Вход</span>
+      </button>
+    </div>  
+    </form>
+  </div>  
+</div>

@@ -1,0 +1,48 @@
+<h3>Добавление задачи:</h3>
+<div class="form-container" >
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="text-field">
+      <input
+        matInput
+        placeholder="Название задачи"
+        formControlName="name"
+      >
+    </mat-form-field>
+    <mat-form-field class="text-field">
+      <textarea
+        matInput
+        placeholder="Описание задачи"
+        formControlName="description"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5">
+      >
+      </textarea>
+    </mat-form-field>
+    <mat-form-field class="text-field">
+      <mat-label>Приоритет</mat-label>
+      <mat-select matNativeControl formControlName="priority"
+      >
+        <mat-option value="hight">Hight</mat-option>
+        <mat-option value="middle">Middle</mat-option>
+        <mat-option value="low">Low</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="text-field">
+      <input
+        matInput
+        placeholder="Планируемое время (мин)"
+        formControlName="planedTime"
+      >
+    </mat-form-field>
+    <div class="buttons-container">
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        mat-raised-button
+      >
+        <span>Создать</span>
+      </button>
+    </div>
+  </form>
+</div>

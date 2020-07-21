@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../servises/user.service';
-import { DialogService } from '../servises/dialog.service';
-import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
-import { AuthService } from '../servises/auth.service';
-import { TaskService } from '../servises/task.service';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserService} from '../servises/user.service';
+import {DialogService} from '../servises/dialog.service';
+import {AlertDialogComponent} from '../alert-dialog/alert-dialog.component';
+import {AuthService} from '../servises/auth.service';
+import {TaskService} from '../servises/task.service';
 
 
 @Component({
@@ -14,17 +14,18 @@ import { TaskService } from '../servises/task.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  
-form: FormGroup;
-user: any;
+
+  form: FormGroup;
+  user: any;
 
   constructor(
     private api: UserService,
     private auth: AuthService,
     private tasks: TaskService,
     private router: Router,
-    private dialogService: DialogService,   
-  ) { }
+    private dialogService: DialogService,
+  ) {
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -33,26 +34,24 @@ user: any;
     });
   }
 
-  onSubmit(){
-    let formData = this.form.value;
+  onSubmit() {
+    const formData = this.form.value;
     this.api.getUserByEmail(formData.email).subscribe((response) => {
-      this.user = response
-      if(this.user .length){
-        if(this.user[0].password == formData.password){
+      this.user = response;
+      if (this.user.length) {
+        if (this.user[0].password === formData.password) {
           this.tasks.setUser(this.user[0].email);
           this.tasks.setTask();
           this.auth.login();
           this.router.navigate(['/main']);
-        }
-        else {
+        } else {
           const warning = {
             'text': 'Введен неверный пароль!',
             confirmButtonText: 'Ок'
           };
-          this.dialogService.openDialog(AlertDialogComponent, warning);  
+          this.dialogService.openDialog(AlertDialogComponent, warning);
         }
-      } 
-      else {
+      } else {
         const warning = {
           'text': 'Пользователь с такой почтой не зарегистрирован.',
           confirmButtonText: 'Ок'
@@ -62,7 +61,7 @@ user: any;
     });
   }
 
-  openDialog(){
+  openDialog() {
     const warning = {
       'text': 'Пользователь с такой почтой не зарегистрирован.',
       confirmButtonText: 'Ок'

@@ -7,48 +7,12 @@
       "tasks": [
         {
           "name": "Текст текст текст",
-          "description": "текст текст текст текст текст текст текст текст текст текст текст текст ",
-          "date": "21.12.2018",
-          "priority": "middle",
-          "planedTime": "15",
-          "factTime": "",
-          "done": false
-        },
-        {
-          "name": "Текст текст текст",
-          "description": "текст текст текст текст текст текст текст текст текст текст текст текст ",
-          "date": "21.12.2018",
-          "priority": "hight",
-          "planedTime": "7",
-          "factTime": "",
-          "done": true
-        },
-        {
-          "name": "Текст текст текст",
-          "description": "текст текст текст текст текст текст текст текст текст текст текст текст ",
-          "date": "21.12.2018",
-          "priority": "low",
-          "planedTime": "3",
-          "factTime": "",
-          "done": false
-        },
-        {
-          "name": "Текст текст текст",
           "date": "25.12.2019",
           "description": "текст текст текст текст текст текст текст текст текст текст текст текст ",
           "priority": "hight",
           "planedTime": "5",
           "factTime": "",
-          "done": false
-        },
-        {
-          "name": "Текст текст текст",
-          "date": "25.12.2019",
-          "description": "текст текст текст текст текст текст текст текст текст текст текст текст ",
-          "priority": "middle",
-          "planedTime": "10",
-          "factTime": "",
-          "done": false
+          "done": true
         }
       ]
     }

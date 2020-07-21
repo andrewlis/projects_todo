@@ -1,38 +1,39 @@
-import { UserService } from './user.service';
-import { Injectable } from '@angular/core';
+import {UserService} from './user.service';
+import {Injectable} from '@angular/core';
 
 interface User {
-  id: string,
-  email: string,
-  tasks: []
+  id: string;
+  email: string;
+  tasks: [];
 }
 
 @Injectable()
 export class TaskService {
-  constructor(private auth: UserService){}
+  constructor(private auth: UserService) {
+  }
 
   tasks: any;
   id: string;
   email: any;
 
-  setUser(email){
+  setUser(email) {
     this.email = email;
   }
 
-  getUserEmail(){
+  getUserEmail() {
     return this.email;
   }
-  
-  getUserTasks(){
+
+  getUserTasks() {
     return this.tasks;
   }
 
-  getUserId(){
+  getUserId() {
     return this.id;
   }
 
-  setTask(){
-    this.auth.getUserByEmail(this.email).subscribe((response: User)=>{
+  setTask() {
+    this.auth.getUserByEmail(this.email).subscribe((response: User) => {
       this.id = response[0].id;
       this.tasks = response[0].tasks;
     });
